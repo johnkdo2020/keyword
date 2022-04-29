@@ -1,7 +1,10 @@
+import string
+import random
+
 from django.contrib.auth import authenticate
 from django.core.mail import EmailMessage
 
-from rest_framework import generics, status, permissions
+from rest_framework import generics, status, permissions, mixins
 from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import get_object_or_404
@@ -10,10 +13,11 @@ from rest_framework.views import APIView
 
 from members.models import User
 from members.serializers import UserSerializer, UserCreateSerializer, UserUpdateSerializer
-from members.text import message
+from members.text import message, temporary_password_message
 
 
 class UserList(generics.ListAPIView):
+    permission_classes = [permissions.AllowAny, ]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -27,9 +31,7 @@ class AuthTokenAPIView(APIView):
     def post(self, request):
         email = request.data['email']
         password = request.data['password']
-        print(email, password)
         user = authenticate(email=email, password=password)
-        print(user)
         if user:
             token, _ = Token.objects.get_or_create(user=user)
         else:
@@ -51,13 +53,13 @@ class UserCreateAPIView(generics.CreateAPIView):
             token, _ = Token.objects.get_or_create(user=user)
             # email 토큰 보내
             message_data = message('127.0.0.1:8000', user.pk, token)
-            mail_title = "이메일 인증을 완료해 주세요"
+            mail_title = "Keyword-it 입니다. 이메일 인증을 완료해 주세요"
             mail_to = user.email
             email = EmailMessage(mail_title, message_data, to=[mail_to])
             email.send()
             return Response(status=status.HTTP_201_CREATED)
         else:
-            print('fail')
+            print('UserCreateAPIView fail')
             return Response(data=serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -109,3 +111,33 @@ class CheckTokenAPIView(generics.RetrieveAPIView):
 
         return Response({'token': token.key,
                          'user': self.serializer_class(token.user).data})
+
+
+class UserFindPasswordAPIView(APIView):
+    permission_classes = [permissions.AllowAny, ]
+    def post(self, request):
+        email = request.data['email']
+        username = request.data['username']
+        try:
+            user_obj = User.objects.get(email=email, username=username)
+        except:
+            user_obj = None
+        if user_obj:
+            password_chars = string.ascii_letters + string.digits + string.punctuation
+            length = random.randint(12, 15)
+
+            password = "".join([random.choice(password_chars) for _ in range(length)])
+            print('password', password)
+            user_obj.set_password(password)
+            user_obj.save()
+
+            message_data = temporary_password_message(email, password)
+            mail_title = f"Keyword-it 입니다. 임시 비밀번호 발행 메일 입니다."
+            mail_to = user_obj.email
+            email = EmailMessage(mail_title, message_data, to=[mail_to])
+            email.send()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            # 아이디 이메일 존재하지 않는다는 메세지 보내기
+            # request 가 잘못된경우의 status 값 보내기
+            return Response(status=status.HTTP_401_UNAUTHORIZED)

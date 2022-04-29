@@ -21,7 +21,8 @@ class UserManager(BaseUserManager):
         user.is_active = False
         user.is_staff = False
         user.is_superuser = False
-        print('UserManager create_user save 직전')
+        user.level = 1
+
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -43,7 +44,6 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.is_superuser = True
         user.level = 100
-        print('UserManager create_superuser save 직전')
         user.save(using=self._db)
         return user
 

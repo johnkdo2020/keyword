@@ -1,7 +1,7 @@
 from django.urls import path
 
 from members.apis import UserList, UserCreateAPIView, AuthTokenAPIView, UserAuthenticatedAPIView, UserInfoChangeAPIView, \
-    CheckTokenAPIView
+    CheckTokenAPIView, UserFindPasswordAPIView
 
 urlpatterns = [
     path('', UserList.as_view(), name="user-list"),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('active/<int:pk>/<str:token>/', UserAuthenticatedAPIView.as_view(), name="user-authenticated"),
     path('<int:pk>/', UserInfoChangeAPIView.as_view(), name="user-change"),
     path('check/', CheckTokenAPIView.as_view(), name="user-check"),
+    path('password/', UserFindPasswordAPIView.as_view(), name='user-forget-password]')
 ]
