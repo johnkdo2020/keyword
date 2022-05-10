@@ -88,7 +88,7 @@ class User(AbstractUser):
         max_length=255,
         blank=True,
         null=True,
-        unique=True)
+        )
     is_active = models.BooleanField(
         verbose_name=_('Is active'),
         default=False

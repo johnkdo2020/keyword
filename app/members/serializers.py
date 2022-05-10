@@ -6,7 +6,8 @@ from members.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude = ("password",)
+        fields = "__all__"
+        # exclude = ("password",)
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -36,9 +37,16 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             "mobile",
-            # "password",
             "company",
             "advertisement_url",
             "naver_api_key",
         )
 
+    def update(self, instance, validated_data):
+        print('serializer update method')
+        instance.mobile = validated_data.get('mobile', instance.mobile)
+        instance.company = validated_data.get('company', instance.company)
+        instance.advertisement_url = validated_data.get('advertisement_url', instance.advertisement_url)
+        instance.naver_api_key = validated_data.get('naver_api_key', instance.naver_api_key)
+        instance.save()
+        return instance

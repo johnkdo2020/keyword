@@ -5,13 +5,17 @@ description = ""
 authors = ["kimdooh <johnkdo2020@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8"
 Django = "<4.0"
 djangorestframework = "^3.13.1"
 Markdown = "^3.3.6"
 django-filter = "^21.1"
 django-phonenumber-field = "^6.1.0"
 phonenumbers = "^8.12.47"
+django-extensions = "^3.1.5"
+notebook = "^6.4.11"
+supervisor = "^4.2.4"
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'phonenumber_field',
     'members.apps.MembersConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -124,11 +125,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# static files
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR, ]
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
+
 
 # Media paths
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
