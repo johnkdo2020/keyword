@@ -18,6 +18,8 @@ from django.urls import path, include
 
 apps_url_patterns = [
     path('members/', include('members.urls')),
+    path('analysis/', include('analysis.urls')),
+    path('keywords/', include('keywords.urls')),
 
 ]
 

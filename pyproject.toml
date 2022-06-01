@@ -16,6 +16,10 @@ django-extensions = "^3.1.5"
 notebook = "^6.4.11"
 supervisor = "^4.2.4"
 gunicorn = "^20.1.0"
+pandas = "^1.4.2"
+numpy = "^1.22.3"
+beautifulsoup4 = "^4.11.1"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 

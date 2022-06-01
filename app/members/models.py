@@ -57,7 +57,6 @@ class User(AbstractUser):
     username = models.CharField(
         verbose_name=_('username'),
         max_length=30,
-        unique=True
     )
     company = models.CharField(
         verbose_name=_('company name'),
@@ -88,7 +87,7 @@ class User(AbstractUser):
         max_length=255,
         blank=True,
         null=True,
-        )
+    )
     is_active = models.BooleanField(
         verbose_name=_('Is active'),
         default=False
@@ -111,19 +110,57 @@ class User(AbstractUser):
         max_length=10,
         blank=True
     )
-    # favorites = models.ManyToManyField(
-    #     Channel, through='Favorite', related_name='users', help_text='즐겨찾기'
-    # )
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
 
-    REQUIRED_FIELDS = ['username', 'mobile',]
+    REQUIRED_FIELDS = ['username', 'mobile', ]
 
     class Meta:
         verbose_name = '유저'
         verbose_name_plural = '%s 목록' % verbose_name
-        ordering = ('-date_joined',)
+        ordering = ('-created_at',)
 
     def __str__(self):
         return f'{self.email}'
+
+
+
+# class NonMember(models.Model):
+#     email = models.EmailField(
+#         verbose_name=_('Email address'),
+#         max_length=255,
+#         unique=True,
+#     )
+#     username = models.CharField(
+#         verbose_name=_('username'),
+#         max_length=30,
+#     )
+#     mobile = PhoneNumberField(
+#         verbose_name=_('mobile phone number'),
+#         unique=True,
+#         null=False,
+#         blank=False,
+#         max_length=30, )
+#     company = models.CharField(
+#         verbose_name=_('company name'),
+#         max_length=30,
+#         blank=True,
+#         null=True)
+#     advertisement_url = models.CharField(
+#         verbose_name=_('광고 URL '),
+#         max_length=255,
+#         blank=True,
+#         null=True)
+#     level = models.IntegerField(
+#         verbose_name=_('user level'),
+#         default=0)
+#
+#     class Meta:
+#         verbose_name = '비유저'
+#         verbose_name_plural = '%s 목록' % verbose_name
+#         ordering = ('-created_at',)
+#
+#     def __str__(self):
+#         return f'{self.email}'

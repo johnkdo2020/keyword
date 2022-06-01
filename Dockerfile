@@ -1,4 +1,4 @@
-FROM        python:3.8-slim as python-base
+FROM        python:3.9-slim as python-base
 
 RUN         apt -y update && apt -y dist-upgrade && apt -y autoremove
 RUN         apt -y full-upgrade
@@ -26,7 +26,7 @@ ENV         PYTHONUNBUFFERED=1 \
             \
             # poetry
             # https://python-poetry.org/docs/configuration/#using-environment-variables
-            POETRY_VERSION=1.1.12 \
+            POETRY_VERSION=1.1.13 \
             # make poetry install to this location
             POETRY_HOME="/opt/poetry" \
             # make poetry create the virtual environment in the project's root
