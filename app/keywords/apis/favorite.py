@@ -1,6 +1,5 @@
 from django.utils import timezone
-from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -10,9 +9,9 @@ from keywords.serializers import FavoriteSerializer
 
 
 class FavoriteViewSet(ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated, ]
     queryset = Favorite.objects.all()
     serializer_class = FavoriteSerializer
-    permission_classes = (IsAuthenticated,)
 
     def get_object(self):
         try:

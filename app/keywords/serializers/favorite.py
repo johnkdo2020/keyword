@@ -14,6 +14,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
         fields = (
+            'pk',
             'user',
             'keyword',
             'is_active'

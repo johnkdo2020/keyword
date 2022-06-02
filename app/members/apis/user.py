@@ -4,7 +4,7 @@ import random
 from django.contrib.auth import authenticate
 from django.core.mail import EmailMessage
 
-from rest_framework import generics, status, permissions, mixins
+from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import get_object_or_404
@@ -65,7 +65,7 @@ class UserDuplicateCheckAPIView(APIView):
             # 이미 아이디가 존재함
             if user_obj.is_active:
 
-                return UsernameDuplicateFailException()
+                raise UsernameDuplicateFailException()
             else:
                 return Response(
                     data={"detail": "사용 가능합니다"}, status=status.HTTP_200_OK)
@@ -199,8 +199,6 @@ class UserInfoChangeAPIView(generics.UpdateAPIView):
     def update(self, request, *args, **kwargs):
         print('APIView update method ')
         print(request.data)
-        partial = kwargs.pop('partial', False)
-        print(partial, 'partial 값 True 인가??????')
         new_password = request.data['newPassword']
         check_password_value = self.request.user.check_password(request.data['password'])
         check_password_last_and_new = request.data['password'] == new_password
@@ -211,7 +209,7 @@ class UserInfoChangeAPIView(generics.UpdateAPIView):
             instance.save()
             # why mobile number exists error
             # even if mobile phone exists and same mobile number just update i want
-            serializer = self.serializer_class(instance, data=request.data, partial=partial)
+            serializer = self.serializer_class(instance, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             self.perform_update(serializer)
             print(serializer.data)

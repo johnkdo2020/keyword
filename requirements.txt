@@ -12,6 +12,7 @@ debugpy @ file:///home/dooh/.cache/pypoetry/artifacts/0b/90/c5/09f9e165bf0fa5fda
 decorator @ file:///home/dooh/.cache/pypoetry/artifacts/5d/5c/84/5cc4430045ad08424f907a400ea96b8345cbfec6d87285e47a6c449740/decorator-5.1.1-py3-none-any.whl
 defusedxml @ file:///home/dooh/.cache/pypoetry/artifacts/2b/69/07/7b13f7eaf3a4d7af737dcebe24d3d17b1c2a2f457fbddf746f5642bc43/defusedxml-0.7.1-py2.py3-none-any.whl
 Django @ file:///home/dooh/.cache/pypoetry/artifacts/47/01/d7/153742013844a035ecb592b343a62819d92393a1944a692773005efea8/Django-3.2.13-py3-none-any.whl
+django-cors-headers @ file:///home/dooh/.cache/pypoetry/artifacts/3c/23/6a/b365fe81cc9e290ad2671feea1cbc307e36dbc92e860a9088956e71cbd/django_cors_headers-3.12.0-py3-none-any.whl
 django-extensions @ file:///home/dooh/.cache/pypoetry/artifacts/0d/65/85/4da0ae6bae7e2a476d39dce1713d309f0aec4445ce2032439e5b90bbf4/django_extensions-3.1.5-py3-none-any.whl
 django-filter @ file:///home/dooh/.cache/pypoetry/artifacts/a9/c6/98/7cc5361bf7dd56b5125c00f61aaf4c4a2c94e438288814f48d6cc4fe3b/django_filter-21.1-py3-none-any.whl
 django-phonenumber-field @ file:///home/dooh/.cache/pypoetry/artifacts/e9/c0/be/7ad131c7eaf6b927c36bd86f97ea8e40e9c949c046fc1eaeddbfc2265c/django_phonenumber_field-6.1.0-py3-none-any.whl
@@ -21,7 +22,6 @@ fastjsonschema @ file:///home/dooh/.cache/pypoetry/artifacts/51/a2/30/5af5e821fc
 gunicorn @ file:///home/dooh/.cache/pypoetry/artifacts/d4/22/ea/fb991f1fdb4e8ae8fd30e0bce3c23ece991aa75df3f5a4c4f4d5aba6ae/gunicorn-20.1.0-py3-none-any.whl
 idna @ file:///home/dooh/.cache/pypoetry/artifacts/d5/04/80/9c17fd3240a37d12ff2ef042b0306aeb1abd2d8b95f150fd60be938352/idna-3.3-py3-none-any.whl
 importlib-metadata @ file:///home/dooh/.cache/pypoetry/artifacts/0e/bf/b8/5aa8328f4872f2f038b15e48abea8dbe20ba8b18cc0309ad17a127019e/importlib_metadata-4.11.3-py3-none-any.whl
-importlib-resources==5.7.1
 ipykernel @ file:///home/dooh/.cache/pypoetry/artifacts/ae/18/57/360f2d19e554810d6204e586ec7a2ce4e46acd27129017247ed73cbd43/ipykernel-6.13.0-py3-none-any.whl
 ipython @ file:///home/dooh/.cache/pypoetry/artifacts/58/24/78/9c40b524564f1f2024124869c0495040669a5d1e0ad51c4a66bef4a68b/ipython-7.33.0-py3-none-any.whl
 ipython-genutils @ file:///home/dooh/.cache/pypoetry/artifacts/b4/31/01/6f96480580d1674cab0b5e26dc9fca7bbdf7a2fd5811a7807a92436268/ipython_genutils-0.2.0-py2.py3-none-any.whl

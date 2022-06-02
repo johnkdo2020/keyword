@@ -15,11 +15,11 @@ SOURCE_PATH = os.path.join(os.getcwd(), f'{PROJECT_NAME}')
 
 # AWS EC2 Information
 USER = 'ubuntu'
-HOST = '52.79.232.20'
+HOST = '52.79.85.87'
 TARGET = f'{USER}@{HOST}'
 HOME = str(Path.home())
 # 현재 폴더 경로
-IDENTITY_FILE = os.path.join(HOME, '.ssh', 'keyword.pem')
+IDENTITY_FILE = os.path.join(HOME, '.ssh', 'keyword-it.pem')
 SECRETS_FILE = os.path.join(os.getcwd(), 'secrets.json')
 
 # Docker Information

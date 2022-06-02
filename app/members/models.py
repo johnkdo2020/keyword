@@ -126,7 +126,6 @@ class User(AbstractUser):
         return f'{self.email}'
 
 
-
 # class NonMember(models.Model):
 #     email = models.EmailField(
 #         verbose_name=_('Email address'),
