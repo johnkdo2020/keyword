@@ -17,9 +17,9 @@ import json
 _BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(_BASE_DIR)
 ROOT_DIR = os.path.dirname(BASE_DIR)
+secrets_path = os.path.join(ROOT_DIR, 'secrets.json')
 SECRET_FULL = json.load(open(os.path.join(ROOT_DIR, 'secrets.json')))
 DJANGO_SECRET_KEY = SECRET_FULL['django']
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -96,7 +96,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
